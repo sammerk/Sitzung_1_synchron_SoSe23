@@ -276,7 +276,7 @@ Kompetenzen sind latente, domänenspezifische Dispositionen, die die erfolgreich
 
 <center>[Daten aus [@klieme2008]]{style="font-size:.5em;"}</center>
 
-## Ihre verzerrte Wahrnehmung
+## Ihre verzerrte Wahrnehmung {.center}
 ### Ergebnisse der Schätzfragen
 
 
@@ -395,6 +395,15 @@ Als Datengrundlage für die statistischen Sitzungen (4,5,6,7) nutzen wir die Erg
 4. Synchrone VL
    * Vertiefende Elaboration im sozialen Kontext
 
+
+## <!-- Job-Alert-->{.center}
+:::{.callout-note collapse=false appearance='default' icon=false}
+## {{< fa person-digging >}} Job-Alert
+[Unser Institut sucht eine Hilfskraft!]{.imp}  
+Typische Hilfskrafttätigkeiten (Recherche, Kopieren, Medienberatung) im Umfang von mindestens 12h pro Monat.
+Tolles Team [{{< fa people-group >}}]{.imp}, guter Kaffe [{{< fa mug-hot >}}]{.imp} und beste Kontakte für Bachelorarbeiten [{{< fa handshake >}}]{.imp} inklusive.  
+Sprechen Sie mich bei Interesse an oder schreiben Sie mir eine Email!
+:::
 
 ## Ihre Fragen {.center}
 
