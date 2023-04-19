@@ -1,0 +1,435 @@
+---
+title: "Vorlesung"
+subtitle: "Einführung in qualitative und quantitative Forschungsmethoden"
+author: "Andre Epp & Samuel Merk"
+format: docx
+---
+
+
+## Herzlich willkommen!  [{{< fa door-open >}}]{.imp} {.center}
+
+```{r hidden chunk which creates template stuff}
+#| echo: false 
+
+## in terminal ########
+# quarto install extension quarto-ext/fontawesome
+# quarto install extension schochastics/academicons
+#
+
+########################
+library(fontawesome)
+library(tidyverse)
+
+# Change css to lecker PH green
+if(!dir.exists("img"))
+dir.create("img")
+if(!dir.exists("css"))
+dir.create("css")
+fileConn<-file("css/custom.scss")
+writeLines(c("/*-- scss:defaults --*/",
+             "$link-color: #8cd000 !default;"), fileConn)
+close(fileConn)
+
+# create sash with URL
+sash <- 
+  ggplot() + 
+  geom_polygon(data = tibble(x = c(0,4,5.5,0),
+                             y = c(1,5,5,-.5)),
+               aes(x,y), fill = "#8cd000") + 
+  coord_fixed() +
+  annotate(geom = "text", 
+           label = " www.bit.ly/merk055", 
+           x = .8, y = .8, 
+           angle = 45,
+           hjust = 0, vjust = 0,
+           size = 10,
+           color = "white") +
+ theme_void() + 
+ theme(plot.margin = margin(-2,0,0,-12, unit = "cm"))
+ggsave("img/sash.svg", sash)
+```
+
+```{css}
+.imp {
+  color: #8cd000;
+}
+
+.em08{
+  font-size: .8em;
+}
+.em07{
+  font-size: .7em;
+}
+
+
+figure>figcaption {
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+.citation {
+  font-size: .8em;
+  color: #8cd000;
+}
+
+
+.timevis.html-widget .vis-background .vis-minor.vis-odd {
+  background: #8CD00030;
+  }
+  
+.vis-text {
+  color: #ffffff !important;
+  }
+  
+.vis-timeline {
+  border: transparent;
+  }
+  
+.vis-item {
+  border-color: #8CD000; 
+  background-color: #8CD000; 
+  color: #ffffff !important;
+}
+
+
+
+.vis-current-time {
+  background-color: #8CD00000;
+}
+  
+```
+
+
+##  {.center}
+<center>
+### [{{< fa user-graduate >}}]{.imp} Mit wem haben Sie es zu tun? 
+<br> 
+```{r, echo = F, warning=FALSE}
+library(timevis)
+data <- data.frame(
+  id      = 1:4,
+  content = c("Item one", "Item two",
+              "Ranged item", "Item four"),
+  start   = c("2016-01-10", "2016-01-11",
+              "2016-01-20", "2016-02-14 15:00:00"),
+  end     = c(NA, NA, "2016-02-04", NA)
+)
+
+data <- data.frame(
+  #id      = 1:4,
+  content = c("Erstes SE"  ,"Zweites SE",
+              "Promotion", "Jun. Prof. TÜ", "Jun. Prof. KA"),
+  start   = c("2010-01-10", "2011-06-11", "2016-07-10", 
+              "2017-04-01", "2020-04-01"),
+  end     = rep(NA, 5)
+)
+
+timevis(data, 
+        loadDependencies = F, 
+        showZoom = F,
+        fit = T)
+```
+</center>
+
+::: footer
+Folien unter https://bit.ly/merk055
+:::
+
+## Heutige Vorlesung {.large .center}
+<br> 
+[{{< fa charging-station >}}]{.imp} Motivierung: Wozu _Forschung_ in der Lehrer:innenbildung?
+
+
+
+[{{< fa microscope >}}]{.imp} Inhaltliche Einführung: Was ist Wissenschaft? 
+
+ 
+
+[{{< fa sitemap >}}]{.imp} Organisatorische Einführung
+
+
+
+[{{< fa question-circle >}}]{.imp} Ihre Fragen
+
+::: footer
+Folien unter https://bit.ly/merk055
+:::
+
+## [{{< fa charging-station >}}]{.imp} Motivierung: {.center}
+#### Wozu _Forschung_ in der Lehrer:innenbildung?
+
+::: footer
+Folien unter https://bit.ly/merk055
+:::
+
+## Charakteristika des Unterrichtens {.center}
+```{r, echo = F, message=FALSE, fig.align='center', warning=FALSE, fig.width=8, fig.caption="Nach Doyle (1986)"}
+library(tidyverse)
+library(highcharter)
+library(viridisLite)
+hchart(
+  tibble(
+  word = sample(c("Multidimensionalität", "Simultanität", 
+                              "Unmittelbarkeit", "Unvorhersehbarkeit", 
+                              "Öffentlichkeit", "Historizität"), 30, replace = T),
+  freq = sample(1:50, 30, replace = T)),
+  "wordcloud",
+  hcaes(name = word, weight = log(freq)),
+  ) %>% 
+   hc_colors("#8CD000")
+
+```
+
+
+::: footer
+Folien unter https://bit.ly/merk053
+:::
+
+## Eine formale Begründung: {.center}
+#### Standards der Kultusministerkonferenz für die Lehrer:innenbildung
+
+ 
+
+> "Die Absolventinnen und Absolventen kennen Grundlagen und Ergebnisse der Schul- und Unterrichtsforschung und können diese anwendungsbezogen reflektieren"
+
+ 
+
+> "Die Absolventinnen und Absolventen rezipieren und bewerten Ergebnisse der Bildungs- und Schulforschung"
+
+
+
+## Eine kompetenztheo. Begründung:{.smaller}
+
+"_Kompetenzen sind latente, domänenspezifische Dispositionen, die die erfolgreiche Problemlösung wahrscheinlicher machen_"
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Bsp. Mathematik
+"_Hr. Müller fährt auf der Autobahn, sieht auf einer App, dass die nächsten Tankstellen in 3km, 65km und 120km kommen mit den Preisen 1,49€, 1,45€ und 1,38€. Ein Blick auf das Amaturenbrett verrät ihm, dass sein Tank noch zu einem Achtel gefüllt ist, weshalb er sich fragt, bis zu welcher Tankstelle er fahren sollte._"
+
+:::
+
+::: {.column width="50%"}
+### Bsp. GPK 
+"_Hr. Müller möchte seine 8. Klasse anhand eines Arbeitsblattes in das stöchiometrische Rechnen (Chemie) einführen. Er fragt sich ob er mit einem Beispiel anfangen soll oder mit einem Problem; ob er Farbe verwenden soll und wenn ja welche; ob er Formelschreibweise oder Teilchenmodelle verwenden soll; die Legende am Rand oder ins Bild integriert sein soll, etc. _"]
+:::
+
+::::
+
+
+
+```{r, echo = F, fig.align='center', out.width="70%", fig.cap="Trade Off von Anwendungsspektrum und Passung"}
+knitr::include_graphics("img/TradeOff.png")
+```
+
+
+## Eine bildungstheoretische Begründung: {.center}
+
+## {background-image="img/gender_disparities_PISA_SCSH.png"}
+
+## Bildungsziel {.center}
+<br>
+[{{< fa check >}}]{.imp} Forschung/Studien erleben, verstehen, interpretieren, bewerten & ggfs. zum Kompetenzaufbau nutzen. 
+
+
+
+<br> 
+[{{< fa times-circle >}}]{.imp} Ausbildung zur Forscherin bzw. zum Forscherin.
+
+
+## Eine kognitionspsychologische Begründung {.center}
+#### Menschliche Wahrnehmung ist verzerrt und selektiv {.smaller}
+
+## {.center}
+:::: columns
+
+::: {.column width="50%"}
+```{r, echo=FALSE, fig.cap="Ebbinghaustäuschung (Massaro & Anderson, 1971)", out.width="60%"}
+knitr::include_graphics("img/Ebbinghaus.png")
+```
+:::
+
+::: {.column width="50%"}
+
+<iframe width="560" height="515" src="https://www.youtube.com/embed/IGQmdoK_ZfY?start=08" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+:::
+
+::::
+
+## Bsp.: Verzerrte Wahrnehmung
+<br>
+> Beantworten Sie Fragen in WebEx
+
+
+
+## [{{< fa smile-wink >}}]{.imp} Hedonistische Begründung {.smaller}
+### It's fun:
+
+```{r, echo = F}
+tibble(
+  Fakultät = c("Studenten", "Studentinnen"),
+  `Fakultät A` = c("100%", "90%"),
+  `Fakultät B` = c("60%", "50%")
+) %>%
+  knitr::kable()
+```
+
+
+
+<br>
+```{r, echo = F}
+tibble(
+  Gruppe = c("Studenten", "Studentinnen"),
+  `Fakultät A` = c("200/200", "900/1000"),
+  `Fakultät B` = c("600/1000", "100/200"),
+  `Gesamt %` = c("~67%", "~83%")
+) %>%
+  knitr::kable()
+```
+<br><br>
+<center> Die Daten stellen das sogenannte Simpson' Paradox dar</center>
+
+## [{{< fa charging-station >}}]{.imp} Motivierung (Zusammenfassung): {.smaller .center}
+### Wozu _Forschung_ in der Lehrer:innenbildung?
+
+* Formaler Grund: $\Rightarrow$ KMK Standards 
+* Kompetenztheoretischer Grund: $\Rightarrow$ Wissen über Forschung macht Sie (mittelbar) kompetenter
+* Bildungstheoretischer Grund $\Rightarrow$ Selbstbestimmt mit Forschung umgehen
+* Hedonistischer Grund $\Rightarrow$ Es macht (kann) Spaß (machen)!
+
+## [{{< fa sitemap >}}]{.imp} Organisatorische Einführung {.smaller .center}
+
+
+> Die Vorlesung wird als Flipped Lesson mit obligatorischen und fakultativen Aufgaben und fakultativem Tutorium ausgebracht. 
+
+* **Erklärvideos** und **Aufgaben** werden spätestens donnerstags in {{< ai moodle >}}oodle [https://bit.ly/merk051](https://bit.ly/merk051) bereitgestellt und können zu einem beliebigen Zeitpunkt rezipiert/bearbeitet werden.
+* Tutorium
+    * Dienstags 08:00 - 09:30 [https://bit.ly/merk052](https://bit.ly/merk052)
+* Mittwochs 16:30 - 18:00 **synchrone Sitzung** mit Elaboration und FAQ (offene Fragen)
+
+## [{{< fa sitemap >}}]{.imp} Organisatorische Einführung {.smaller .center}
+> Um dem Ziel »Forschung erleben« näher zu kommen, durchlaufen Sie selbst Datenerhebungen und Experimente, die wir anschließend gemeinsam besprechen.
+
+
+
+
+* Diese sind aus didaktischen Gründen obligatorisch (gemeinsame Besprechung)
+
+
+
+* Für eine Win-Win-Situation wünschen wir uns, dass Sie Ihre anonymisierten Daten freiwillig zur wissenschaftlichen Analyse freigeben.
+
+
+
+* Als symbolische Anerkennung dieser »Datenspende« verlosen wir einen 50€ Amazongutschein und 4x10€ Karlsruher Einkaufsgutscheine unter allen Datenspender\*innen.
+
+## Eingangsbefragung {.smaller}
+Als Datengrundlage für die statistischen Sitzungen (4,5,6,7) nutzen wir die Ergebnisse der Eingangsbefragung. Sie enthält außerdem Variablen, die es uns erlauben die Lehre zu optimieren (z.B. Nichtbestehensquote im SoSe deutlich gesenkt) ...
+
+
+
+<br>
+> Link »Eingangsbefragung« auf {{< ai moodle >}}oodle (https://bit.ly/merk051)
+
+
+## Klausur {.smaller}
+> Termin: 14.02.2022 18:00 - 19:30  
+> Modus: Synchron-digitale Open-Book-Online-Klausur  
+
+<br>
+
+### Aus unserer Rahmenprüfungsordnung
+> [...] sind bestanden, wenn die oder der Studierende mindestens 60 Prozent der zu erreichenden Gesamtpunktzahl erreicht hat. Die Prüfung ist auch bestanden, wenn die vom Prüfling erreichte Punktzahl um nicht mehr als 20 Prozent die durchschnittlichen Prüfungsleistungen aller Prüfungsteilnehmerinnen und Prü- fungsteilnehmer an dieser Prüfung unterschreitet (relative Bestehensgrenze). Kommt die relative Bestehensgrenze zur Anwendung, so müssen für das Bestehen der Prüfung mindestens 50 Prozent der möglichen Gesamtpunkte erreicht werden.
+
+
+## Anforderungen {.smaller}
+* Sie bekommen 4CP $\Rightarrow \frac{4 \cdot 30h}{15\;Wochen} = 8\frac{h}{Woche}$ 
+* Meine Prognose: Wenn Sie diese Zeit investieren, bestehen Sie die Klausur recht sicher 
+* Befragung aus dem Sommersemester: Über 90% der Studierenden bringt weniger Zeit auf als durch die CP gefordert
+* Klausuraufgaben enthalten (für den Quantiteil) die gleichen Konzepte wie die formativen Übungsaufgaben
+* Bestehensbedingungen:
+    * Befragungen (vorr. 2) bearbeitet
+    * Experimente (vorr. 2) bearbeitet
+
+## {background-image="img/klausur_dist.png"}
+
+## {background-image="img/formative_ass_klausur.png"}
+
+## {background-image="img/kalusur_bestehen_aufgaben.png"}
+
+## Vorschlag »Studierverhalten« {.smaller}
+1. Videos 
+    * Rezipieren
+    * Active Retrieval (Yang et al., 2021)
+    * Vertiefende Elaboration (Beispiele, Gegenbeispiele, Verallgemeinerungen, Spezialisierungen)
+2. Aufgaben
+3. evtl. Tutorium oder Materialien aus dem Tutorium
+4. Synchrone VL
+   * Vertiefende Elaboration im sozialen Kontext
+
+
+## Ihre Fragen
+
+## Inhaltliche Einführung: 
+### Wissenschaft vs. Nicht-Wissenschaft
+
+
+## Was ist Wissenschaft?
+> Wer wissenschaftliche Forschung („scientific research“) betreibt, sucht mithilfe [anerkannter wissenschaftlicher Methoden und Methodologien]{.imp} auf der Basis des bisherigen [Forschungsstandes]{.imp} (d. h. vorliegender Theorien und empirischer Befunde) [zielgerichtet]{.imp} nach [gesicherten]{.imp} neuen Erkenntnissen, [dokumentiert]{.imp} den Forschungsprozess sowie dessen Ergebnisse in nachvollziehbarer Weise und stellt die Studie in [Vorträgen und Publikationen]{.imp} der Fachöffentlichkeit vor (Döring & Bortz, 2019).
+
+
+## Typische Topologie {.smaller}
+
+:::: columns
+
+::: {.column width="50%"}
+* Nicht-empirische Wissenschaften
+    * Formale Wiss.
+        * Mathematik
+        * Philosophie
+        * Theoretische Informatik
+        * ...
+    * Geisteswissenschaften
+        * Theologie
+        * Rechtswiss.
+        * Literaturwissenschaft
+        * ...
+:::
+
+::: {.column width="50%"}
+* Empirische Wissenschaften
+    * Sozialwissenschaften
+        * Psychologie
+        * Erziehungswissenschaft
+        * ...
+    * Naturwissenschaften    
+        * Physik
+        * Chemie
+        * ...
+    * Technikwissenschaften
+        * Maschinenbau
+        * ...
+:::
+
+::::
+
+## Bsp.: Nicht-Wissenschaft {.smaller}
+> Ein Schulentwicklungsteam befragt Eltern zur neuen Schulmensa. Es verwendet einen »perfekten Fragebogen« & »optimale Auswertung«. Danach werden die Ergebnisse in einem Elternbrief kommuniziert und das Schulessen entsprechend der Ergebnisse angepasst.
+
+
+
+Wer wissenschaftliche Forschung („scientific research“) betreibt, sucht mithilfe [anerkannter wissenschaftlicher Methoden und Methodologien]{.imp} [{{< fa check-circle >}}]{.imp} auf der Basis des [bisherigen Forschungsstandes]{.imp} [{{< fa times-circle >}}]{.imp} (d. h. vorliegender Theorien und empirischer Befunde) [zielgerichtet]{.imp} [{{< fa check-circle >}}]{.imp} nach gesicherten neuen Erkenntnissen, [dokumentiert]{.imp}  [{{< fa times-circle >}}]{.imp} den Forschungsprozess sowie dessen Ergebnisse [in nachvollziehbarer Weise]{.imp} [{{< fa times-circle >}}]{.imp} und stellt die Studie in Vorträgen und Publikationen der [Fachöffentlichkeit]{.imp} [{{< fa times-circle >}}]{.imp} vor.
+
+## Differenz zu Wissensgenese durch
+* Autoritätspersonen $\Rightarrow$ geringeres Eigeninteresse ...
+* gesunder Menschenverstand $\Rightarrow$ variiert sehr stark zwischen sozialen Gruppen ...
+* Intuition $\Rightarrow$ geringere Vorurteile, geringeres Wunschdenken ...
+* Anektotische Evidenz $\Rightarrow$ objektivere & vollständigere Beobachtung ...
+
+## Was kommt im Quanti-Teil auf sie zu?
+<iframe style="width:1000px;height:450px;border: 1px
+solid black" src="https://app.wisemapping.com/c/maps/1210585/embed?zoom=1"> </iframe>
