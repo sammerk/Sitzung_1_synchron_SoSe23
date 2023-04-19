@@ -1,0 +1,121 @@
+---
+title: "Auswertung Schätzfragen"
+author: "Samuel Merk"
+format: html
+editor: visual
+---
+
+# Download der Daten
+
+```{r}
+library(tidyverse)
+source("https://soscisurvey.ph-karlsruhe.de/merksurvey001/?act=JH6nhScyBcX4XDWGFnnRJlg1&rScript")
+ds <- ds |>
+  mutate(SAEffectsize = SF04,
+         samplesize = as.numeric(samplesize)) |> 
+  filter(lubridate::ymd_hms(STARTED) > lubridate::ymd_hms("2023-04-19 12:00:00"))
+```
+
+# Wie viele Studis haben mitgemacht?
+
+```{r}
+nrow(ds)
+```
+
+# Prozentschätzfragen
+
+## Rohwerte
+
+```{r}
+library(hrbrthemes)
+ds |> 
+  select(perc_lu, perc_su) |> 
+  gather("Aufgabe", "Ihre Schätzung") |> 
+  mutate(dummy = 1) |> 
+  ggplot(aes(x = `Ihre Schätzung`, y = dummy)) +
+    geom_jitter(alpha = .6, color = "#8cd000", height = 0) +
+    facet_wrap(~ Aufgabe, ncol = 1) +
+    theme_modern_rc() +
+    ylab("") +
+    theme(axis.text.y = element_blank(),
+          strip.text = element_text(color = "white"))
+  
+
+```
+
+Die wahren Werte liegen bei:
+
+-   Laut Mikrozensus 2021: 1,6 Millionen Lehrkräfte insgesamt (ca. 0,02%); davon rund 1 Mio. an allg. oder beruflichen Schulen
+
+-   Ca. 10% der Bevölkerung sind Schülerinnen und Schüler (Statistisches Bundesamt)
+
+# Schätzung Lockdowneffekt
+
+```{r}
+ds |> 
+  select(LAEffectsize, SAEffectsize) |> 
+  gather("Anker", "Effectsize") |> 
+  mutate(Effectsize = factor(Effectsize,
+                             levels = c("[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", 
+                                        "[8]", "[9]", "[10]", "[11]"))) |> 
+  na.omit() |> 
+  ggplot(aes(x = Effectsize)) +
+  geom_bar() +
+  scale_x_discrete(drop=FALSE) +
+  ylab("Anzahl Antworten") +
+  xlab("Abbildung/Effektstärke") +
+  theme_modern_rc()
+```
+
+Richtig ist \[6\] (siehe Engzell et al. 2020).
+
+![](img/true_Lockdown.png){fig-align="center"}
+
+# Ankereffekt
+
+Sie haben unterschiedliche Stichprobengrößen präsentiert bekommen:
+
+![](img/demoAnker.png){fig-align="center"}
+
+Ihre Schätzung der notwendigen Stichprobengröße:
+
+```{r}
+#| fig-height: 4
+ds |> 
+  mutate(dummy = 1) |> 
+  ggplot(aes(x = samplesize, y = dummy)) +
+    geom_jitter(alpha = .6, color = "#8cd000", height = 0) +
+    facet_wrap( ~ SF06, ncol = 1) +
+    theme_modern_rc() +
+    ylab("") +
+    theme(axis.text.y = element_blank(),
+          strip.text = element_text(color = "white"))
+```
+
+# Genderbias?
+
+Sie haben unterschiedliche Aufforderungen bekommen:
+
+-   Geben Sie den ***Vornamen eines Schülers*** Ihres Abiturjahrgangs an, der gut in Mathematik war.
+
+-   Geben Sie den ***Vornamen einer Schülerin oder eines Schülers*** Ihres Abiturjahrgangs an, der bzw. die besonders gut in Mathematik war.
+
+Eine algorithmische Auswertung des Geschlechts der von Ihnen genannten Schüler:innen ergibt:
+
+```{r}
+library(gender)
+library(genderizeR)
+gender07 <- gender(as.character(ds$SF07_01))$gender
+gender08 <- gender(as.character(ds$SF08_01))$gender
+
+tibble("Gender Vorname" = c(gender07, gender08),
+       "Aufforderung" = c(rep("generisches Maskulinum", length(gender07)),
+                          rep("und-Schreibweise", length(gender08)))) |> 
+  ggplot(aes(`Gender Vorname`)) +
+  geom_bar(color = "#8cd000", fill = "#8cd000") +
+  facet_wrap( ~ Aufforderung, ncol = 2) +
+  theme_modern_rc() +
+  ylab("Anzahl Ihrer Antworten") +
+  theme(strip.text = element_text(color = "white"))
+  
+```

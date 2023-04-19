@@ -246,8 +246,8 @@ Kompetenzen sind latente, domänenspezifische Dispositionen, die die erfolgreich
 
 ## Eine kognitionspsychologische Begründung {.center}
 
-## Mini-Survey 1 {.center}
-> Bitte bearbeiten Sie die Mini-Survey 1 (link auf moodle unter bit.ly/merk089)
+## Schätzfragen {.center}
+> Bitte bearbeiten Sie ein paar Schätzfragen. Gehen Sie dazu in unseren moodle-Kurs unter [https://bit.ly/merk089]{.imp} und klicken Sie auf den Link »Schätzfragen«.
 
 ## Verzerrte und selektive Wahrnehmung {.center}
 :::: columns
@@ -264,7 +264,7 @@ Kompetenzen sind latente, domänenspezifische Dispositionen, die die erfolgreich
 
 ::::
 
-## Verzerrte Wahrnehmung {.center}
+## [Verzerrte Wahrnehmung im Unterricht]{style="font-size:.8em;"} {.center}
 
 ::: {.r-stack}
 ![](img/DESI_Redeanteil-2.svg){width="110%" fig-align="center"}
@@ -277,6 +277,7 @@ Kompetenzen sind latente, domänenspezifische Dispositionen, die die erfolgreich
 <center>[Daten aus [@klieme2008]]{style="font-size:.5em;"}</center>
 
 ## Ihre verzerrte Wahrnehmung
+### Ergebnisse der Schätzfragen
 
 
 ## Hedonistische Begründung [{{< fa smile-wink >}}]{.imp} {.smaller}
@@ -329,11 +330,11 @@ tibble(
 
 > Die Vorlesung wird als Flipped Lesson mit obligatorischen und fakultativen Aufgaben und fakultativem Tutorium ausgebracht. 
 
-* **Erklärvideos** und **Aufgaben** werden spätestens donnerstags in moodle [https://bit.ly/merk](https://bit.ly/merk) bereitgestellt und können zu einem beliebigen Zeitpunkt rezipiert/bearbeitet werden.
-* Tutorium (quantitativ - Merk)
+* **Erklärvideos** und **Aufgaben** werden spätestens donnerstags in moodle [https://bit.ly/merk089](https://bit.ly/merk089) bereitgestellt und können zu einem beliebigen Zeitpunkt rezipiert/bearbeitet werden.
+* FAQ Tutorium (quantitativ - Merk)
     * Montag 08:00 - 09:30  Gebäude A HS Karlsruhe - Aula
-    * Donnerstag 12:00 - 13:30 
-* Mittwochs 16:30 - 18:00 **synchrone Sitzung** mit Elaboration und FAQ (offene Fragen)
+    * Donnerstag 12:00 - 13:30 Hörsaal NN
+* Mittwochs 16:30 - 18:00 **synchrone Sitzung** mit Elaboration und Vertiefung
 
 ## Organisatorische Einführung [{{< fa sitemap >}}]{.imp} {.smaller .center}
 > Um dem Ziel »Forschung erleben« näher zu kommen, durchlaufen Sie selbst Datenerhebungen und Experimente, die wir anschließend gemeinsam besprechen.
@@ -358,7 +359,7 @@ Als Datengrundlage für die statistischen Sitzungen (4,5,6,7) nutzen wir die Erg
 
 <br>
 
-> Link »Eingangsbefragung« auf {{< ai moodle >}}oodle (https://bit.ly/)
+> Link »Eingangsbefragung« auf moodle ([https://bit.ly/089]{.imp})
 
 
 ## Klausur {.smaller}
@@ -382,8 +383,6 @@ Als Datengrundlage für die statistischen Sitzungen (4,5,6,7) nutzen wir die Erg
 
 ## <!-- Image -->{background-image="img/klausur_dist.png" background-size="contain"}
 
-## <!-- Image -->{background-image="img/formative_ass_klausur.png" background-size="contain"}
-
 ## <!-- Image -->{background-image="img/practice_resultsWiSe2223.png" background-size="contain"}
 
 ## Vorschlag »Studierverhalten« {.smaller}
@@ -397,13 +396,12 @@ Als Datengrundlage für die statistischen Sitzungen (4,5,6,7) nutzen wir die Erg
    * Vertiefende Elaboration im sozialen Kontext
 
 
-## Ihre Fragen
+## Ihre Fragen {.center}
 
-## Inhaltliche Einführung: 
-### Wissenschaft vs. Nicht-Wissenschaft
+## Inhaltliche Einführung: {.center}
+![](img/wiss_meme.png){}
 
-
-## Was ist Wissenschaft?
+## Was ist Wissenschaft? {.smaller .center}
 > Wer wissenschaftliche Forschung („scientific research“) betreibt, sucht mithilfe [anerkannter wissenschaftlicher Methoden und Methodologien]{.imp} auf der Basis des bisherigen [Forschungsstandes]{.imp} (d. h. vorliegender Theorien und empirischer Befunde) [zielgerichtet]{.imp} nach [gesicherten]{.imp} neuen Erkenntnissen, [dokumentiert]{.imp} den Forschungsprozess sowie dessen Ergebnisse in nachvollziehbarer Weise und stellt die Studie in [Vorträgen und Publikationen]{.imp} der Fachöffentlichkeit vor (Döring & Bortz, 2019).
 
 
@@ -442,22 +440,18 @@ Als Datengrundlage für die statistischen Sitzungen (4,5,6,7) nutzen wir die Erg
 
 ::::
 
-## Bsp.: Nicht-Wissenschaft {.smaller}
+## Bsp.: Nicht-Wissenschaft {.smaller .center}
 > Ein Schulentwicklungsteam befragt Eltern zur neuen Schulmensa. Es verwendet einen »perfekten Fragebogen« & »optimale Auswertung«. Danach werden die Ergebnisse in einem Elternbrief kommuniziert und das Schulessen entsprechend der Ergebnisse angepasst.
 
 . . .
 
 Wer wissenschaftliche Forschung („scientific research“) betreibt, sucht mithilfe [anerkannter wissenschaftlicher Methoden und Methodologien]{.imp} [{{< fa check-circle >}}]{.imp} auf der Basis des [bisherigen Forschungsstandes]{.imp} [{{< fa times-circle >}}]{.imp} (d. h. vorliegender Theorien und empirischer Befunde) [zielgerichtet]{.imp} [{{< fa check-circle >}}]{.imp} nach gesicherten neuen Erkenntnissen, [dokumentiert]{.imp}  [{{< fa times-circle >}}]{.imp} den Forschungsprozess sowie dessen Ergebnisse [in nachvollziehbarer Weise]{.imp} [{{< fa times-circle >}}]{.imp} und stellt die Studie in Vorträgen und Publikationen der [Fachöffentlichkeit]{.imp} [{{< fa times-circle >}}]{.imp} vor.
 
-## Differenz zu Wissensgenese durch
+## Differenz zu Wissensgenese durch {.smaller .center}
 * Autoritätspersonen $\Rightarrow$ geringeres Eigeninteresse ...
 * gesunder Menschenverstand $\Rightarrow$ variiert sehr stark zwischen sozialen Gruppen ...
 * Intuition $\Rightarrow$ geringere Vorurteile, geringeres Wunschdenken ...
 * Anektotische Evidenz $\Rightarrow$ objektivere & vollständigere Beobachtung ...
-
-## Was kommt im Quanti-Teil auf sie zu?
-<iframe style="width:1000px;height:450px;border: 1px
-solid black" src="https://app.wisemapping.com/c/maps/1210585/embed?zoom=1"> </iframe>
 
 
 ## Literatur
