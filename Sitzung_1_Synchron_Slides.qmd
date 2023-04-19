@@ -333,7 +333,7 @@ tibble(
 * **Erklärvideos** und **Aufgaben** werden spätestens donnerstags in moodle [https://bit.ly/merk089](https://bit.ly/merk089) bereitgestellt und können zu einem beliebigen Zeitpunkt rezipiert/bearbeitet werden.
 * FAQ Tutorium (quantitativ - Merk)
     * Montag 08:00 - 09:30  Gebäude A HS Karlsruhe - Aula
-    * Donnerstag 12:00 - 13:30 Hörsaal NN
+    * Donnerstag 12:00 - 13:30 Hörsaal 2.A020 
 * Mittwochs 16:30 - 18:00 **synchrone Sitzung** mit Elaboration und Vertiefung
 
 ## Organisatorische Einführung [{{< fa sitemap >}}]{.imp} {.smaller .center}
